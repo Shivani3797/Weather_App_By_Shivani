@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SB's Real-Time Weather App</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Optional: Your CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ Only if using jQuery version of script.js -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Weather App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">Quick Cities</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" onclick="getWeather('Delhi')">Delhi</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getWeather('Mumbai')">Mumbai</a></li>
+            <li><a class="dropdown-item" href="#" onclick="getWeather('Bangalore')">Bangalore</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Search -->
+      <form class="d-flex" id="cityForm">
+        <input class="form-control me-2" id="cityInput" type="search" placeholder="Enter city" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Header Section -->
+<div class="container">
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal text-body-emphasis">Weather Now</h1>
+    <p class="fs-5 text-body-secondary">
+      Real-time weather updates for your selected city. Get accurate temperature, wind, humidity, and more.
+    </p>
+  </div>
+
+  <!-- Cards Section -->
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center g-4">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm equal-height-card">
+        <div class="card-header py-3"><h4 class="my-0 fw-normal">Humidity</h4></div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title"><span id="humidity">--</span>%</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Wind Degree: <span id="wind_degrees">--</span>°</li>
+            <li>Cloud: <span id="cloud_pct">--</span>%</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm equal-height-card">
+        <div class="card-header py-3"><h4 class="my-0 fw-normal">Temperature</h4></div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title"><span id="temp">--</span>°C</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Min Temp: <span id="min_temp">--</span>°C</li>
+            <li>Max Temp: <span id="max_temp">--</span>°C</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border-primary equal-height-card">
+        <div class="card-header py-3 text-bg-primary border-primary"><h4 class="my-0 fw-normal">Wind & Sun</h4></div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title"><span id="wind_speed">--</span> km/h</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Sunrise: <span id="sunrise">--</span></li>
+            <li>Sunset: <span id="sunset">--</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <h2 class="display-6 text-center mb-4">Weather of Common Places</h2>
+  <div class="table-responsive">
+    <table class="table text-center table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Date</th>
+          <th>City</th>
+          <th>Cloud_pct</th>
+          <th>Feels_like</th>
+          <th>Humidity</th>
+          <th>Max_Temp</th>
+          <th>Min_Temp</th>
+          <th>Sunrise</th>
+          <th>Sunset</th>
+          <th>Temp</th>
+          <th>Wind_degrees</th>
+          <th>Wind_speed</th>
+        </tr>
+      </thead>
+      <tbody id="city-weather-table">
+        <tr>
+          <td class="weather-date">--</td>
+          <th>Delhi</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td>
+        </tr>
+        <tr>
+          <td class="weather-date">--</td>
+          <th>Mumbai</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td>
+        </tr>
+        <tr>
+          <td class="weather-date">--</td>
+          <th>Bangalore</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Bootstrap JS + Your Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

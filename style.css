@@ -1,0 +1,72 @@
+
+  /* Background Sky Blue Gradient */
+  body {
+    background: linear-gradient(to top right, #dbeafe, #e0f2fe);
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    min-height: 100vh;
+  }
+
+  /* Optional light cloud overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/cloudy-day.png');
+    opacity: 0.1;
+    z-index: 0;
+  }
+
+  /* Keep main content on top */
+  .container,
+  nav,
+  .navbar,
+  .card,
+  table {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Card styling */
+  .card {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #cfe2ff;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.1);
+  }
+
+  /* Table styling */
+  .table th,
+  .table td {
+    vertical-align: middle;
+  }
+
+  /* Navbar branding */
+  .navbar {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+    color: #0d6efd;
+  }
+
+  .table-responsive {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Date badge for table */
+  .weather-date {
+    font-weight: bold;
+    color: #0d6efd;
+  }
+
+
+
