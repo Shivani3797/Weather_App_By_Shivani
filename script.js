@@ -1,4 +1,4 @@
-const apiKey = 'ppDt---------------cqv'; // 🔁 Replace with your real key
+const apiKey = 'ppDt---------------cqv'; // Replace with your real key
 
 function formatTime(unixTime) {
   const date = new Date(unixTime * 1000);
@@ -48,7 +48,7 @@ function getWeather(city) {
       updateUI(city, result);
     },
     error: function (jqXHR) {
-      alert("❌ City not found or API error.");
+      alert(" City not found or API error.");
       console.error('Error: ', jqXHR.responseText);
     }
   });
